@@ -8,9 +8,7 @@ botaoAdicionarPaciente.addEventListener("click", function (event) { // {event} √
     var form = document.querySelector("#form-adiciona");
     var paciente = extrairPacienteForm(form);
 
-    //monta a <tr> dentro da fun√ß√£o
-    var pacienteTr = montaTr(paciente);
-
+    
     erros = validaPaciente(paciente);
 
     var ulErros = document.querySelector("#erros");
@@ -34,11 +32,16 @@ botaoAdicionarPaciente.addEventListener("click", function (event) { // {event} √
         ulErros.innerHTML = "";
     }
 
-    tabela.appendChild(pacienteTr);
-
+    criaPaciente(paciente);
+    
     form.reset();
 })
 
+function criaPaciente(paciente){
+    var tr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.append(tr);
+}
 
 function extrairPacienteForm(form) { //recebe o objeto formul√°rio com os dados
 
